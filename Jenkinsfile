@@ -1,38 +1,36 @@
 pipeline {
-    
-    agent any
-
-    stages {
-
-        stage("build") {
-
-            steps {
-                echo 'building the application ...'
-
-            }
-        }
+  environment {
+    registry = "gustavoapolinario/docker-test"
+    registryCredential = 'dockerhub'
+    dockerImage = ''
+  }
+  agent any
+  stages {
+    stage('Cloning Git') {
+      steps {
+        git 'https://github.com/gustavoapolinario/microservices-node-example-todo-frontend.git'
+      }
     }
-        stages {
-
-        stage("test") {
-
-            steps {
-                echo 'testing the application ...'
-
-            }
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
+      }
     }
-
-    stages {
-
-        stage("deploy") {
-
-            steps {
-                echo 'deploying the application ...'
-
-            }
+    stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
         }
+      }
     }
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $registry:$BUILD_NUMBER"
+      }
+    }
+  }
 }
-
-
