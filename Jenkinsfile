@@ -64,15 +64,15 @@ pipeline {
                 sh "mvn clean install"
             }
         }
-        stage('Docker Build & Push') {
-            steps {
-                script{
-                    withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker') {
-                        sh "docker build -t yahya4246/jenkins-image:tag123 ."
-                        // sh "docker push yahya4246/jenkins-image:tag123"
-                    }
-                }
-            }
+        // stage('Docker Build & Push') {
+        //     steps {
+        //         script{
+        //             withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker') {
+        //                 sh "docker build -t yahya4246/jenkins-image:tag123 ."
+        //                 // sh "docker push yahya4246/jenkins-image:tag123"
+        //             }
+        //         }
+        //     }
         }
     }
 }
