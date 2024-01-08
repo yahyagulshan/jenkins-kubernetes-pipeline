@@ -15,33 +15,64 @@
 //   }
 // }
 
-node {
-    def app
+// node {
+//     def app
 
-    stage('Clone repository') {
+//     stage('Clone repository') {
       
 
-        checkout scm
-    }
+//         checkout scm
+//     }
 
-    stage('Build image') {
+//     stage('Build image') {
   
-       app = docker.build("brandonjones085/test")
-    }
+//        app = docker.build("brandonjones085/test")
+//     }
 
-    stage('Test image') {
+//     stage('Test image') {
   
 
-        app.inside {
-            sh 'echo "Tests passed"'
-        }
-    }
+//         app.inside {
+//             sh 'echo "Tests passed"'
+//         }
+//     }
 
-    stage('Push image') {
+//     stage('Push image') {
         
-        docker.withRegistry('https://registry.hub.docker.com', 'git') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
+//         docker.withRegistry('https://registry.hub.docker.com', 'git') {
+//             app.push("${env.BUILD_NUMBER}")
+//             app.push("latest")
+//         }
+//     }
+// }
+
+pipeline {
+    agent any
+    tools{
+        jdk 'openjdk'
+        maven 'maven-3'
+    }
+
+    stages {
+        stage('SCM') {
+            steps {
+                git changelog: false, poll: false, url: 'https://github.com/jaiswaladi246/docker-spring-boot-java-web-service-example.git'
+            }
+        }
+        stage('Maven-Build') {
+            steps {
+                sh "mvn clean install"
+            }
+        }
+        stage('Docker Build & Push') {
+            steps {
+                script{
+                    withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker') {
+                        sh "docker build -t yahya4246/jenkins-image:tag123 ."
+                        // sh "docker push yahya4246/jenkins-image:tag123"
+                    }
+                }
+            }
         }
     }
 }
