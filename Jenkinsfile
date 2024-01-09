@@ -59,11 +59,18 @@ pipeline {
                 git changelog: false, poll: false, url: 'https://github.com/yahyagulshan/jenkins-kubernetes-pipeline.git'
             }
         }
-        // stage('Maven-Build') {
-        //     steps {
-        //         sh "mvn clean install"
-        //     }
-        // }
+        stage('Maven-Build') {
+            steps {
+                sh "mvn clean install"
+            }
+        }
+        stage('Deploy to k8s'){
+            steps{
+                script{
+                    kubernetesDeploy (configs: 'deploymentservice.yaml',kubeconfigId: 'k8sconfigpwd')
+                }
+            }
+        }  
         // stage('Docker Build & Push') {
         //     steps {
         //         script{
