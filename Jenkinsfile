@@ -59,11 +59,11 @@ pipeline {
                 git changelog: false, poll: false, url: 'https://github.com/yahyagulshan/jenkins-kubernetes-pipeline.git'
             }
         }
-        stage('Maven-Build') {
-            steps {
-                sh "mvn clean install"
-            }
-        }
+        // stage('Maven-Build') {
+        //     steps {
+        //         sh "mvn clean install"
+        //     }
+        // }
         // stage('Docker Build & Push') {
         //     steps {
         //         script{
