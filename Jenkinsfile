@@ -21,10 +21,22 @@ pipeline {
                 }
             }
         }
-        stage('Deploy to k8s'){
-            steps{
-                script{
-                    kubernetesDeploy (configs: 'deployment.yaml')
+        // stage('Deploy to k8s'){
+        //     steps{
+        //         script{
+        //             kubernetesDeploy (configs: 'deployment.yaml')
+        //         }
+        //     }
+        // }
+
+        stage('Deploy to K8s') {
+            steps {
+                script {
+                    // Set KUBECONFIG environment variable for kubectl
+                    withEnv(['KUBECONFIG=' + env.KUBECONFIG]) {
+                        // Deploy to Kubernetes
+                        sh 'kubectl apply -f kubernetes/deployment.yaml'
+                    }
                 }
             }
         }
