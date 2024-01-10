@@ -35,7 +35,7 @@ pipeline {
                     // Set KUBECONFIG environment variable for kubectl
                     withEnv(['KUBECONFIG=' + env.KUBECONFIG]) {
                         // Deploy to Kubernetes
-                        sh 'kubectl apply -f kubernetes/deployment.yaml'
+                        sh 'kubectl apply -f deployment.yaml'
                     }
                 }
             }
