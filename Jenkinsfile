@@ -21,34 +21,14 @@ pipeline {
 //                 }
 //             }
 //         }
-        // stage('Deploy to k8s'){
-        //     steps{
-        //         script{
-        //             kubernetesDeploy (configs: 'deployment.yaml')
-        //         }
-        //     }
-        // }
-
-        // stage('Deploy to K8s') {
-        //     steps {
-        //         script {
-        //             // Set KUBECONFIG environment variable for kubectl
-        //             withEnv(['KUBECONFIG=' + env.KUBECONFIG]) {
-        //                 // Deploy to Kubernetes
-        //                 sh 'kubectl apply -f deployment.yaml'
-        //             }
-        //         }
-        //     }
-        // }
         
-        stage('Deploy to Kubernetes') {
-            steps {
-                script {
-                    withCredentials([my-kubeconfig(credentialsId: 'my-kubeconfig', variable: 'KUBECONFIG')]) {
-                        sh "kubectl apply -f deployment.yaml"  // Apply Kubernetes manifests
-                    }
+        stage('Deploy to k8s'){
+            steps{
+                script{
+                    kubernetesDeploy (configs: 'deployment.yaml',kubeconfigId: 'k8sconfigpwd')
                 }
             }
         }
+        
     }
 }
