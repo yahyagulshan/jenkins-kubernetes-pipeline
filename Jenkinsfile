@@ -1,7 +1,7 @@
 pipeline {
     agent any
     
-    }
+    
     stages{
         stage('Build php'){
             steps{
@@ -35,3 +35,4 @@ pipeline {
             }
         }
     }
+}
