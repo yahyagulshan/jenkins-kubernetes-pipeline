@@ -49,21 +49,22 @@ pipeline {
             }
         }
 
-        stage('Push Image Locally') {
+        stage('Push Docker Image') {
             steps {
                 script {
-                    sh "eval $(minikube docker-env)"  // Enable Minikube to access local Docker daemon
                     dockerImage.push()
                 }
             }
         }
+    }
 
-        stage('Deploy to Minikube') {
-            steps {
-                script {
-                    sh "kubectl apply -f deployment.yaml"  // Replace with your deployment manifest
-                }
-            }
+    post {
+        success {
+            echo "Image built and pushed successfully!"
+        }
+        failure {
+            echo "Build or push failed!"
         }
     }
 }
+
