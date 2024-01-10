@@ -44,7 +44,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    withCredentials([kubeconfigContent(credentialsId: 'my-kubeconfig', variable: 'KUBECONFIG')]) {
+                    withCredentials([my-kubeconfig(credentialsId: 'my-kubeconfig', variable: 'KUBECONFIG')]) {
                         sh "kubectl apply -f deployment.yaml"  // Apply Kubernetes manifests
                     }
                 }
