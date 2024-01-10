@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools{
-        php 'php'
+         'php'
     }
     stages{
         stage('Build php'){
