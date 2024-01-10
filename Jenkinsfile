@@ -3,13 +3,13 @@ pipeline {
     
     
     stages{
-        stage('Build php'){
-            steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/feature']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/yahyagulshan/jenkins-kubernetes-pipeline']]])
-                sh 'composer install'
-                
-            }
-        }
+        // stage('Build php'){
+        //     steps{
+        //         checkout([$class: 'GitSCM', branches: [[name: '*/feature']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/yahyagulshan/jenkins-kubernetes-pipeline']]])
+        //         sh 'composer install'
+
+        //     }
+        // }
         stage('Build docker image'){
             steps{
                 script{
