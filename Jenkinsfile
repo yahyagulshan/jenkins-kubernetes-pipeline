@@ -29,13 +29,23 @@ pipeline {
         //     }
         // }
 
-        stage('Deploy to K8s') {
+        // stage('Deploy to K8s') {
+        //     steps {
+        //         script {
+        //             // Set KUBECONFIG environment variable for kubectl
+        //             withEnv(['KUBECONFIG=' + env.KUBECONFIG]) {
+        //                 // Deploy to Kubernetes
+        //                 sh 'kubectl apply -f deployment.yaml'
+        //             }
+        //         }
+        //     }
+        // }
+        
+        stage('Deploy to Kubernetes') {
             steps {
                 script {
-                    // Set KUBECONFIG environment variable for kubectl
-                    withEnv(['KUBECONFIG=' + env.KUBECONFIG]) {
-                        // Deploy to Kubernetes
-                        sh 'kubectl apply -f deployment.yaml'
+                    withCredentials([kubeconfigContent(credentialsId: 'my-kubeconfig', variable: 'KUBECONFIG')]) {
+                        sh "kubectl apply -f deployment.yaml"  // Apply Kubernetes manifests
                     }
                 }
             }
