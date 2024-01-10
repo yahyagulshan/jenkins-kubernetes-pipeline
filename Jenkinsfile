@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            // ... other configuration
+            credentialsId 'kubernetes'  // Reference the credentials
+        }
+    }
     
     
     stages{
