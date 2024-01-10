@@ -1,15 +1,14 @@
 pipeline {
-    node('php') {
-
-    stage('Get code from SCM') {
-        checkout(
-                [$class: 'GitSCM', branches: [[name: '*/#feature#']],
-                 doGenerateSubmoduleConfigurations: false,
-                 extensions: [],
-                 submoduleCfg: [],
-                 userRemoteConfigs: [[url: '#https://github.com/yahyagulshan/jenkins-kubernetes-pipeline#']]]
-        )
+    agent any
+    
     }
+    stages{
+        stage('Build php'){
+            steps{
+                checkout([$class: 'GitSCM', branches: [[name: '*/feature']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/yahyagulshan/jenkins-kubernetes-pipeline']]])
+                sh 'php clean install'
+            }
+        }
         stage('Build docker image'){
             steps{
                 script{
