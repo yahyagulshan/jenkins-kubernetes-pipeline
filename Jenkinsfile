@@ -10,17 +10,17 @@ pipeline {
                 }
             }
         }
-//         stage('Push image to Hub'){
-//             steps{
-//                 script{
-//                    withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-//                    sh 'docker login -u yahya4246 -p ${dockerhubpwd}'
+        stage('Push image to Hub'){
+            steps{
+                script{
+                   withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
+                   sh 'docker login -u yahya4246 -p ${dockerhubpwd}'
 
-// }
-//                    sh 'docker push yahya4246/jenkins-image'
-//                 }
-//             }
-//         }
+}
+                   sh 'docker push yahya4246/jenkins-image'
+                }
+            }
+        }
         
         stage('Deploy to k8s'){
             steps{
