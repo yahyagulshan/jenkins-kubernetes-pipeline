@@ -54,7 +54,7 @@ pipeline{
         stage('Deploy Docker Image') {
             steps {
                 script {
-                 withCredentials([string(credentialsId: 'yahya4246', variable: 'dockerhubpwd')]) {
+                 withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
                     sh 'docker login -u yahya4246 -p ${dockerhubpwd}'
                  }  
                  sh 'docker push yahya4246/nodejsapp-1.33'
