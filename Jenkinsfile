@@ -57,7 +57,7 @@ pipeline{
             steps {
                 script {
                  withCredentials([string(credentialsId: 'dockerhub-pwd', variable: 'dockerhubpwd')]) {
-                    sh 'docker login -u dockerhub-pwd -p ${dockerhubpwd}'
+                    sh 'docker login -u yahya4246 -p ${dockerhubpwd}'
                  }  
                  sh 'docker push yahya4246/jenkins-image'
                 }
