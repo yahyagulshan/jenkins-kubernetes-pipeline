@@ -39,7 +39,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-pod
+  name: my-pod-service
   namespace: default
 spec:
   selector:
