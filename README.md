@@ -50,6 +50,16 @@ Before you begin, make sure you have the following:
 * In the last "Pipeline" section in `defination` select "pipeline script fo SCM". In repository again give the github repo link. for credentials select "none". in "branches to build" give your branch name and then save.
 ![Screenshot from 2024-01-12 18-52-08](https://github.com/yahyagulshan/jenkins-kubernetes-pipeline/assets/59036269/102837de-a251-45a7-bb37-ab510899e10d)![Screenshot from 2024-01-12 18-56-40](https://github.com/yahyagulshan/jenkins-kubernetes-pipeline/assets/59036269/f24dbd03-7f3e-4cda-8987-b56351a2fa5d)
 
+* now press "build now"
+
+---
+![Screenshot from 2024-01-12 20-11-36](https://github.com/yahyagulshan/jenkins-kubernetes-pipeline/assets/59036269/d6780edf-9ffb-4664-9484-59f8899ab2a9)
+
+* pipeline should be running
+
+---
+![Screenshot from 2024-01-12 20-12-54](https://github.com/yahyagulshan/jenkins-kubernetes-pipeline/assets/59036269/ce50cbd9-3af6-4144-8d93-c380941f0f8e)
+
  
 
 
