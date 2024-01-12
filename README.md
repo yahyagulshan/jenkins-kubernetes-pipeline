@@ -32,7 +32,7 @@ Before you begin, make sure you have the following:
   ---
  ![Screenshot from 2024-01-12 18-41-53](https://github.com/yahyagulshan/jenkins-kubernetes-pipeline/assets/59036269/c97d975c-f2be-4cac-8bab-f1aa2c755308)
 
-* then add credentials for Dockerhub and Kubernetes
+* then add credentials for Dockerhub and Kubernetes and GitHub. (for GitHub password should be "token")
 
 * After creating the credentials create Pipeline for that click on newItem
 
@@ -62,7 +62,31 @@ Before you begin, make sure you have the following:
  * this repo we have `Dockerfile` and `index.php` file. these files are for creating php web page.
 ![Screenshot from 2024-01-11 21-15-00](https://github.com/yahyagulshan/jenkins-kubernetes-pipeline/assets/59036269/fb7ab2cc-ca83-40a7-8e4b-af814cfc8937)
 
+## Important Note (To run the auto-trigger pipeline our Jenkins should be on a Public host like "EC2" )
+* For auto trigger we need to create a webhook on the GitHub repo because the webhook needs to communicate over the public IP.
 
+### Steps for autotrigger pipeline
+* First we need to create the webhook on our GitHub repo for this go to setting > webhook > Add webhook 
+
+---
+![Screenshot from 2024-01-13 00-44-10](https://github.com/yahyagulshan/jenkins-kubernetes-pipeline/assets/59036269/abf5cd71-27d5-4904-adfa-60fcd602ac6e)
+
+* here give the info Jenkins "Ec2" publicIP with "8080" Port and click add webhook.
+
+---
+  ![Screenshot from 2024-01-13 00-46-18](https://github.com/yahyagulshan/jenkins-kubernetes-pipeline/assets/59036269/434e680b-cb46-4cd0-97a2-9bf93dbd543b)
+
+* Now go to Jenkins open the Project click on "configure"
+
+  ---
+  ![Screenshot from 2024-01-13 00-49-12](https://github.com/yahyagulshan/jenkins-kubernetes-pipeline/assets/59036269/bdbc72d0-c0e3-4d6c-9a04-cfacd666569a)
+
+* configuration page opens here find "Build Triggers" and click on "GitHub hook trigger for GITScm polling"
+
+ ---
+ ![Screenshot from 2024-01-13 00-50-25](https://github.com/yahyagulshan/jenkins-kubernetes-pipeline/assets/59036269/d0a1ca88-66d0-4710-a3dc-3cb6d3fc2158)
+
+ * Now when we commit new changes on Github with the Specified Branch our Jenkins pipeline should trigger automatically.
 
 
 
