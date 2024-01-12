@@ -10,8 +10,7 @@ Before you begin, make sure you have the following:
 
 # Detail about files that are placed on the repository for Containerize.
 
-* this repo we have `Dockerfile` and `index.php` file. these files are for creating php web page.
-![Screenshot from 2024-01-11 21-15-00](https://github.com/yahyagulshan/jenkins-kubernetes-pipeline/assets/59036269/fb7ab2cc-ca83-40a7-8e4b-af814cfc8937)
+
 
 * for creating webpage `git clone https://github.com/yahyagulshan/jenkins-kubernetes-pipeline`
 
@@ -60,7 +59,8 @@ Before you begin, make sure you have the following:
 ---
 ![Screenshot from 2024-01-12 20-12-54](https://github.com/yahyagulshan/jenkins-kubernetes-pipeline/assets/59036269/ce50cbd9-3af6-4144-8d93-c380941f0f8e)
 
- 
+ * this repo we have `Dockerfile` and `index.php` file. these files are for creating php web page.
+![Screenshot from 2024-01-11 21-15-00](https://github.com/yahyagulshan/jenkins-kubernetes-pipeline/assets/59036269/fb7ab2cc-ca83-40a7-8e4b-af814cfc8937)
 
 
 
