@@ -30,7 +30,7 @@
 
     <div class="jumbotron">
 
-        <p class="lead">This is a simple example using PHP, HTML, and Bootstrap. time 20:18 </p>
+        <p class="lead">This is a simple example using PHP, HTML, and Bootstrap. time 23:46 </p>
     </div>
 
     <div class="container">
